@@ -3,7 +3,7 @@ package duongtung.com.mymvp.base
 import java.lang.ref.WeakReference
 
 /**
- * Created by FRAMGIA\duong.thanh.tung on 08/12/2017.
+ * Created by duong.thanh.tung on 08/12/2017.
  */
 abstract class BasePresenter<V : IView> :  IPresenter<V>{
 

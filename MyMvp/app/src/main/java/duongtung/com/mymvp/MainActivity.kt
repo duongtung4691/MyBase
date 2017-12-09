@@ -21,6 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainVIew, MainPresenter>()
     override fun hideLoading() {
     }
 
+
     override fun getContext(): Context {
         return this
     }

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
 /**
- * Created by FRAMGIA\duong.thanh.tung on 08/12/2017.
+ * Created by duong.thanh.tung on 08/12/2017.
  */
 
 abstract class BaseActivity<VB : ViewDataBinding,V: IView, P : BasePresenter<V>>: AppCompatActivity(), IView {
@@ -21,9 +21,6 @@ abstract class BaseActivity<VB : ViewDataBinding,V: IView, P : BasePresenter<V>>
     /**
      *
      *@init Presenter
-     * if using BaseActivity<ViewDataBinding,Presenter> is not null must init presenter in here
-     * else using Base<ViewDataBinding> can not call this function
-     *
      *
      **/
     protected abstract fun initPresenter() : P
