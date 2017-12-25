@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="duongtung.com.mymvvm.features.test.TestActivityPresenter" />
+        <variable
+            name="model"
+            type="duongtung.com.mymvvm.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/toolbar"></include>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_test2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.name}" />
+
+        <Button
+            android:id="@+id/btn_Click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->presenter.btnClick()}"
+            android:text="Click11111" />
+
+        <LinearLayout
+            android:id="@+id/llTestFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="LL Test" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
