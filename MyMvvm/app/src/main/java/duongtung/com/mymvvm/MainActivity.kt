@@ -6,7 +6,7 @@ import duongtung.com.mymvvm.base.BaseActivity
 import duongtung.com.mymvvm.databinding.ActivityMainBinding
 import duongtung.com.mymvvm.features.test.ActivityTest
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainVIew, MainPresenter>(), MainVIew {
+class MainActivity : BaseActivity<ActivityMainBinding, MainVIew, MainViewModel>(), MainVIew {
     override fun getEditText(): String {
         return binding.testText.text.toString()
     }
@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVIew, MainPresenter>(
         startActivity(intent)
     }
 
-    override fun initPresenter(): MainPresenter = MainPresenter()
+    override fun initPresenter(): MainViewModel = MainViewModel()
 
     override fun showLoading(text: String) = binding.testText.setText(text)
 

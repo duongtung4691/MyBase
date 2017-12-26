@@ -2,13 +2,12 @@ package duongtung.com.mymvvm.features.test
 
 import android.util.Log
 import android.widget.Toast
-import duongtung.com.mymvvm.MainVIew
-import duongtung.com.mymvvm.base.BasePresenter
+import duongtung.com.mymvvm.base.BaseViewModel
 
 /**
  * Created by FRAMGIA\tong.xuan.an on 19/12/2017.
  */
-class TestActivityPresenter : BasePresenter<TestView>() {
+class TestActivityViewModel : BaseViewModel<TestView>() {
 
     fun btnClick() {
         Log.e("btnClick","click")

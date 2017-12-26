@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity
  * Created by duong.thanh.tung on 08/12/2017.
  */
 
-abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresenter<V>> : AppCompatActivity(), IView {
+abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BaseViewModel<V>> : AppCompatActivity(), IView {
 
     /**
      *
@@ -52,8 +52,8 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
     /**
      * add fragment in backstack
      * **/
-    fun addFragment(fragment: Fragment, tag: String) {
-        supportFragmentManager.beginTransaction().add(fragment, tag).commit()
+    fun addFragment(id: Int, fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().add(id, fragment, tag).commit()
     }
 
     fun replaceFragment(id: Int, fragment: Fragment) {
@@ -64,8 +64,20 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
         supportFragmentManager.beginTransaction().replace(id, fragment, tag).commit()
     }
 
+    /**
+     * replace fragment and add to backstack
+     * */
+    fun replaceAndAdd(id: Int, fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().replace(id, fragment, tag).addToBackStack(tag).commit()
+    }
+
+    fun replaceAndAdd(id: Int, fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(id, fragment).addToBackStack(null)
+                .commit()
+    }
+
     override fun onBackPressed() {
-        if (supportFragmentManager.fragments.size > 0) {
+        if (supportFragmentManager.fragments.size > 1) {
             back()
         } else {
             finish()
@@ -79,6 +91,9 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
         supportFragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
+    /**
+     * pop fragment pre
+     * **/
     private fun back() {
         supportFragmentManager.popBackStack()
     }

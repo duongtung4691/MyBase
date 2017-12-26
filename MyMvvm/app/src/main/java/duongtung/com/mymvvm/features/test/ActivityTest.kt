@@ -10,7 +10,7 @@ import duongtung.com.mymvvm.databinding.ActivityTestBinding
 /**
  * Created by FRAMGIA\tong.xuan.an on 19/12/2017.
  */
-class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityPresenter>(), TestView {
+class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityViewModel>(), TestView {
     val fragment = FragmentTest()
     override fun getContext(): Context = this
     override fun binding() {
@@ -19,7 +19,7 @@ class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityPre
     }
     override fun getLayoutId(): Int = R.layout.activity_test
 
-    override fun initPresenter(): TestActivityPresenter = TestActivityPresenter()
+    override fun initPresenter(): TestActivityViewModel = TestActivityViewModel()
     override fun addFragment() {
         Log.e("ActivityTest","addFragment")
         replaceFragment(R.id.llTestFragment, fragment, "FragmentTest")
