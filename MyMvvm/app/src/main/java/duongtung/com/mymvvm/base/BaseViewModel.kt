@@ -5,7 +5,7 @@ import java.lang.ref.WeakReference
 /**
  * Created by duong.thanh.tung on 08/12/2017.
  */
-abstract class BasePresenter<V : IView> :  IPresenter<V>{
+abstract class BaseViewModel<V : IView> :  IViewModel<V>{
 
     private var viewRef: WeakReference<V>? = null
 

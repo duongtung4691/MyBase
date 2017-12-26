@@ -5,7 +5,7 @@
 
         <variable
             name="presenter"
-            type="duongtung.com.mymvvm.features.test.TestActivityPresenter" />
+            type="duongtung.com.mymvvm.features.test.TestActivityViewModel" />
         <variable
             name="model"
             type="duongtung.com.mymvvm.User" />
