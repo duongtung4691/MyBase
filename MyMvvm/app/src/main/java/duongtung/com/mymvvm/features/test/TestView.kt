@@ -7,4 +7,5 @@ import duongtung.com.mymvvm.base.IView
  */
 interface TestView : IView {
     fun addFragment()
+    fun replaceFragment()
 }

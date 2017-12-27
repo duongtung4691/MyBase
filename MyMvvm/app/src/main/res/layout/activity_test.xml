@@ -5,7 +5,8 @@
 
         <variable
             name="presenter"
-            type="duongtung.com.mymvvm.features.test.TestActivityPresenter" />
+            type="duongtung.com.mymvvm.features.test.TestActivityViewModel" />
+
         <variable
             name="model"
             type="duongtung.com.mymvvm.User" />
@@ -29,17 +30,30 @@
             android:layout_height="wrap_content"
             android:text="@{model.name}" />
 
-        <Button
-            android:id="@+id/btn_Click"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->presenter.btnClick()}"
-            android:text="Click11111" />
-
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->presenter.btnAddClick()}"
+                android:text="add" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->presenter.btnRClick()}"
+                android:text="replace" />
+        </LinearLayout>
+
+        <FrameLayout
             android:id="@+id/llTestFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorAccent"
             android:orientation="vertical">
 
             <TextView
@@ -47,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:text="LL Test" />
-        </LinearLayout>
+        </FrameLayout>
 
     </LinearLayout>
 </layout>

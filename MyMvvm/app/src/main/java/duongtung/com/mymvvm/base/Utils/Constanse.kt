@@ -6,5 +6,6 @@ package duongtung.com.mymvvm.base.Utils
 class Constanse {
     companion object {
         val BASE_URL = "https://api.learn2crack.com/"
+        const val EXTRA_ARGS = "extra_args"
     }
 }

@@ -1,17 +1,22 @@
 package duongtung.com.mymvvm.base
 
+import android.app.Activity
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import duongtung.com.mymvvm.base.Utils.Constanse.Companion.EXTRA_ARGS
+
 
 /**
  * Created by duong.thanh.tung on 08/12/2017.
  */
 
-abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresenter<V>> : AppCompatActivity(), IView {
+abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BaseViewModel<V>> : AppCompatActivity(), IView {
 
     /**
      *
@@ -52,8 +57,8 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
     /**
      * add fragment in backstack
      * **/
-    fun addFragment(fragment: Fragment, tag: String) {
-        supportFragmentManager.beginTransaction().add(fragment, tag).commit()
+    fun addFragment(id: Int, fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().add(id, fragment, tag).commit()
     }
 
     fun replaceFragment(id: Int, fragment: Fragment) {
@@ -63,14 +68,34 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
     fun replaceFragment(id: Int, fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction().replace(id, fragment, tag).commit()
     }
+    /**
+     * replace fragment and add to backstack
+     * */
+    fun replaceAndAdd(id: Int, fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().replace(id, fragment, tag).addToBackStack(tag).commit()
+    }
+
+    fun replaceAndAdd(id: Int, fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(id, fragment).addToBackStack(null)
+                .commit()
+    }
+
+    fun goTo(cls: Activity, bundle: Bundle? = null, parcel: Parcelable? = null) {
+        intent = Intent(this, cls::class.java)
+        if (bundle != null) intent.putExtra(EXTRA_ARGS, bundle)
+        if (parcel != null) intent.putExtra(EXTRA_ARGS, parcel)
+        startActivity(intent)
+
+    }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.fragments.size > 0) {
+        if (supportFragmentManager.fragments.size > 1) {
             back()
         } else {
             finish()
         }
     }
+
 
     /**
      * pop fragment by tag
@@ -80,7 +105,8 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BasePresent
     }
 
     private fun back() {
-        supportFragmentManager.popBackStack()
+        supportFragmentManager.popBackStackImmediate()
+        supportFragmentManager.fragments.removeAt(supportFragmentManager.fragments.size - 1)
     }
 
 }
