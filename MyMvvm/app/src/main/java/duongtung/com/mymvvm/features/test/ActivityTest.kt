@@ -26,7 +26,7 @@ class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityVie
     }
 
     override fun replaceFragment() {
-        replaceFragment(R.id.llTestFragment, FragmentTwo(), "fragmentTow")
+        replaceAndAdd(R.id.llTestFragment, FragmentTwo(), "fragmentTow")
     }
 
 }
