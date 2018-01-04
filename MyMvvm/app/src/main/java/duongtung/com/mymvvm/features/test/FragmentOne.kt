@@ -8,7 +8,7 @@ import duongtung.com.mymvvm.databinding.FragmentTestBinding
 /**
  * Created by FRAMGIA\tong.xuan.an on 21/12/2017.
  */
-class FragmentTest : BaseFragment<FragmentTestBinding, MainFragmentCallback>() {
+class FragmentOne : BaseFragment<FragmentTestBinding, MainFragmentCallback>() {
 
     override fun initCallBack(): MainFragmentCallback = context as MainFragmentCallback
 

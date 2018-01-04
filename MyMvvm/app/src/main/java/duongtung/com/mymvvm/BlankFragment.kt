@@ -18,7 +18,7 @@ import duongtung.com.mymvvm.databinding.FragmentBlankBinding
 class BlankFragment : BaseFragment<FragmentBlankBinding,MainFragmentCallback>() {
     override fun initCallBack(): MainFragmentCallback = context as MainFragmentCallback
 
-    override fun getLayoutId(): Int = R.layout.fragment_blank
+    override fun getLayoutId(): Int = R.layout.fragment_one
 
 
 //    // TODO: Rename and change types of parameters
@@ -38,7 +38,7 @@ class BlankFragment : BaseFragment<FragmentBlankBinding,MainFragmentCallback>() 
 //    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
 //                              savedInstanceState: Bundle?): View? {
 //        // Inflate the layout for this fragment
-//        return inflater!!.inflate(R.layout.fragment_blank, container, false)
+//        return inflater!!.inflate(R.layout.fragment_one, container, false)
 //    }
 //
 //    // TODO: Rename method, update argument and hook method into UI event

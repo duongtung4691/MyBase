@@ -10,19 +10,23 @@ import duongtung.com.mymvvm.databinding.ActivityTestBinding
 /**
  * Created by FRAMGIA\tong.xuan.an on 19/12/2017.
  */
-class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityPresenter>(), TestView {
-    val fragment = FragmentTest()
+class ActivityTest : BaseActivity<ActivityTestBinding, TestView, TestActivityViewModel>(), TestView {
     override fun getContext(): Context = this
     override fun binding() {
-        binding.presenter=presenter
+        binding.presenter = presenter
         binding.model = User("xuanan")
     }
+
     override fun getLayoutId(): Int = R.layout.activity_test
 
-    override fun initPresenter(): TestActivityPresenter = TestActivityPresenter()
+    override fun initPresenter(): TestActivityViewModel = TestActivityViewModel()
     override fun addFragment() {
-        Log.e("ActivityTest","addFragment")
-        replaceFragment(R.id.llTestFragment, fragment, "FragmentTest")
+        Log.e("ActivityTest", "addFragment")
+        addFragment(R.id.llTestFragment, FragmentOne(), "FragmentOne")
+    }
+
+    override fun replaceFragment() {
+        replaceAndAdd(R.id.llTestFragment, FragmentTwo(), "fragmentTow")
     }
 
 }
