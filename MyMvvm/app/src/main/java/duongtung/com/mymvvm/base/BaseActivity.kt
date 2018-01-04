@@ -68,6 +68,7 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BaseViewMod
     fun replaceFragment(id: Int, fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction().replace(id, fragment, tag).commit()
     }
+
     /**
      * replace fragment and add to backstack
      * */
@@ -106,7 +107,6 @@ abstract class BaseActivity<VB : ViewDataBinding, V : IView, out P : BaseViewMod
 
     private fun back() {
         supportFragmentManager.popBackStackImmediate()
-        supportFragmentManager.fragments.removeAt(supportFragmentManager.fragments.size - 1)
+        //  supportFragmentManager.fragments.removeAt(supportFragmentManager.fragments.size - 1)
     }
-
 }

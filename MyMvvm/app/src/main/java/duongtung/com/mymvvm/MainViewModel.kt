@@ -34,7 +34,6 @@ class MainViewModel : BaseViewModel<MainVIew>() {
                 }, { error ->
                     run {
                         Log.e("requestLogin", "" + error.toString())
-
                     }
                 })
     }
